@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js" defer></script>
+</head>
+
+<body>
+    <div class="library-container">
+        <div class="top-bar">
+            <div class="logo">
+                <img src="" alt="logo-image">
+                Daehee's Library
+            </div>
+            <div class="search">
+                <button class="search-icon"></button>
+                <input type="text" name="search-bar" id="search-bar">
+            </div>
+            <div class="profile">
+                <button class="profile"><img src="" alt="profile-image"></button>
+            </div>
+        </div>
+        <div class="middle-section">
+            <div class="section-title">New Book</div>
+            <form action="" method="post">
+                <div class="book-title">
+                    <label for="book-title">Title</label>
+                    <input type="text" id="book-title" name="book_title" required>
+                </div>
+                <div class="book-author">
+                    <label for="book-author">Author</label>
+                    <input type="text" id="book-author" name="book_author" required>
+                </div>
+                <div class="book-pages">
+                    <label for="book-pages">Pages</label>
+                    <input type="number" id="book-pages" name="book_pages" min="0" max="10000" required>
+                </div>
+                <div class="book-read">
+                    <label for="book-read">Read</label>
+                    <input type="checkbox" id="book-read" name="book_read" required>
+                </div>
+                <div class="book-cover">
+                    <label for="book-cover">Cover Image Link</label>
+                    <input type="url" id="book-cover" name="book_cover">
+                </div>
+                <button type="submit">Add</button>
+            </form>
+            <img src="" alt="Library Image" id="website-cover-image">
+        </div>
+        <div class="bottom-section"> <!-- book container -->
+            <!-- <div class="book-card">
+                <button class="delete"></button>
+                <button class="info"></button>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
