@@ -1,0 +1,244 @@
+/* style.css */
+/* Initialization */
+
+
+:root {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--background-color);
+
+    /* color palette */
+    --background-color: #cfcabf;
+    --main-color: #485b54;
+    --secondary-color: #767e74;
+    --bright-color: #e8e9e7;
+    --font-color: #040505;
+}
+
+button {
+    border: none;
+    background-color: var(--background-color);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    height: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+input {
+    background-color: var(--bright-color);
+    border: none;
+}
+
+
+/* END of Initialization */
+
+
+
+.library-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+}
+
+
+/* TOP-Bar Design */
+.top-bar {
+    display: grid;
+    grid-template-columns: auto 4fr auto;
+    align-items: center;
+    margin-top: 1em;
+    /* padding-left: 2em;
+    padding-right: 2em; */
+    gap: 5rem;
+}
+
+/* Top-bar: logo */
+.logo {
+    font-weight: bold;
+    font-size: 5em;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto;
+    /* height: 3em; */
+    gap: 0.5em;
+    color: var(--font-color);
+
+}
+
+.logo>img {
+    height: 1em;
+}
+
+/* Top-bar: Search-bar */
+.search {
+    display: grid;
+    grid-template-columns: auto 5fr;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.search-icon {
+    background-color: var(--background-color);
+    /* height:2em; */
+}
+
+.search-icon:hover {
+    /* border: 2px black solid; */
+    /* border-radius: 50%; */
+    opacity: 0.5;
+
+}
+
+.search-icon>img {
+    height: 2.5em;
+    /* align-items: center; */
+}
+
+.search>input {
+    background-color: var(--bright-color);
+    border-radius: 1em;
+    border: none;
+    /* box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3); */
+    padding: 1.5em;
+}
+
+/* Top-bar: Profile image */
+button.profile>img {
+    height: 4em;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    object-fit: cover;
+}
+
+button.profile:hover {
+    opacity: 0.5;
+}
+
+div.profile {
+    display: grid;
+    grid-template-columns: auto auto;
+    font-weight: bold;
+    align-items: center;
+    color: var(--font-color);
+    font-size: 1.5rem;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+/* END of Top-Bar Design */
+
+
+
+
+/* Middle-Section Design */
+.middle-section {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+}
+
+/* form design */
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(auto, 6);
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.section-title {
+    grid-area: 1 / 1;
+    color: var(--main-color);
+    font-size: 5.5rem;
+    font-weight: bold;
+    /* align-self: flex-end; */
+    margin-bottom: -15px;
+}
+
+.user-input-book {
+    background-color: var(--bright-color);
+    border-radius: 1em;
+    border: none;
+    padding: 1em 0;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.user-input-book>input {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 100%;
+}
+
+.user-input-book>label {
+    padding: 0 2rem;
+    border-right: 1px solid var(--main-color);
+    font-weight: bold;
+}
+
+.user-input-book.elem2 {
+    grid-row: 2;
+    grid-column: 1/-1;
+}
+
+.elem3 {
+    grid-row: 3;
+    grid-column: 1/-1;
+}
+
+.elem5 {
+    grid-row: 4;
+    grid-column: 1/-1;
+}
+
+form>button {
+    background-color: var(--main-color);
+    padding: 1rem;
+    border-radius: 2rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+form>button:hover{
+    background-color: var(--secondary-color);
+}
+
+
+/* Library Cover Image */
+#website-cover-image {
+    border-radius: 1rem;
+    width: min(100%, 100rem)
+}
+
+/* END of MIDDLE-Section */
+
+
+
+/* Bottom-section Design */
+.bottom-section{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+}
+
+.book-card{
+    /* width: auto; */
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 3/4;
+}

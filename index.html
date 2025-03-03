@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Library</title>
+    <title>Daehee's JS Library</title>
     <link rel="stylesheet" href="style.css">
     <script src="js.js" defer></script>
 </head>
@@ -13,49 +13,67 @@
     <div class="library-container">
         <div class="top-bar">
             <div class="logo">
-                <img src="" alt="logo-image">
-                Daehee's Library
+                <img src="icons/sample-logo.svg" alt="logo-image">
+                Library
             </div>
             <div class="search">
-                <button class="search-icon"></button>
+                <button class="search-icon"><img src="icons/search.svg" alt="search-icon"></button>
                 <input type="text" name="search-bar" id="search-bar">
             </div>
             <div class="profile">
-                <button class="profile"><img src="" alt="profile-image"></button>
+                <button class="profile"><img src="images/profile-img.jpg" alt="profile-image"></button>
+                Daehee Lee
             </div>
         </div>
         <div class="middle-section">
-            <div class="section-title">New Book</div>
             <form action="" method="post">
-                <div class="book-title">
+                <div class="section-title">New Book</div>
+                <div class="user-input-book elem1">
                     <label for="book-title">Title</label>
                     <input type="text" id="book-title" name="book_title" required>
                 </div>
-                <div class="book-author">
+                <div class="user-input-book elem2">
                     <label for="book-author">Author</label>
                     <input type="text" id="book-author" name="book_author" required>
                 </div>
-                <div class="book-pages">
+                <div class="user-input-book elem3">
                     <label for="book-pages">Pages</label>
                     <input type="number" id="book-pages" name="book_pages" min="0" max="10000" required>
                 </div>
-                <div class="book-read">
+                <div class="user-input-book elem4">
                     <label for="book-read">Read</label>
                     <input type="checkbox" id="book-read" name="book_read" required>
                 </div>
-                <div class="book-cover">
-                    <label for="book-cover">Cover Image Link</label>
+                <div class="user-input-book elem5">
+                    <label for="book-cover">Cover Image</label>
                     <input type="url" id="book-cover" name="book_cover">
                 </div>
-                <button type="submit">Add</button>
+                <button type="submit">Add a New Book</button>
             </form>
-            <img src="" alt="Library Image" id="website-cover-image">
+            <img src="https://media.istockphoto.com/id/1339845062/photo/reading-room-or-library-interior-with-leather-armchair-bookshelf-and-floor-lamp.jpg?s=612x612&w=0&k=20&c=2ghOW2DCvb49Up3D0eFeVzv1kbSMjUq-_psohUYeZB0="
+                alt="Library Image" id="website-cover-image">
         </div>
         <div class="bottom-section"> <!-- book container -->
-            <!-- <div class="book-card">
+            <div class="book-card" style="background-image: url('https://m.media-amazon.com/images/I/712cDO7d73L.jpg')">
                 <button class="delete"></button>
                 <button class="info"></button>
-            </div> -->
+            </div>
+            <div class="book-card">
+                <button class="delete"></button>
+                <button class="info"></button>
+            </div>
+            <div class="book-card">
+                <button class="delete"></button>
+                <button class="info"></button>
+            </div>
+            <div class="book-card">
+                <button class="delete"></button>
+                <button class="info"></button>
+            </div>
+            <div class="book-card">
+                <button class="delete"></button>
+                <button class="info"></button>
+            </div>
         </div>
     </div>
 </body>
