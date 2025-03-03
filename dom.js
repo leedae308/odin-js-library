@@ -19,6 +19,10 @@ function refresh() {
         const infoIcon = document.createElement('img');
         deleteIcon.src = "icons/delete-outline.svg";
         infoIcon.src = "icons/information-outline.svg";
+        deleteButton.setAttribute("class", "delete-button");
+        infoButton.setAttribute("class", "info-button");
+        deleteButton.setAttribute("title", `${element.title}`)
+        infoButton.setAttribute("title", `${element.title}`)
 
         deleteButton.appendChild(deleteIcon);
         infoButton.appendChild(infoIcon);
@@ -28,7 +32,17 @@ function refresh() {
 
         section.appendChild(bookCard);
     })
+
+    console.table(myLibrary);
+    attachDeleteButtonListeners();
+
+
 }
+
+//.bottom-section
+//      <div .book-card>
+//          <button>
+//          <button>
 
 refresh();
 
@@ -47,3 +61,33 @@ form.addEventListener("submit", (event) => {
     console.table(myLibrary);
 })
 
+
+function attachDeleteButtonListeners() {
+    //dialog box creation:
+    const del = document.querySelectorAll(".delete-button");
+    const dialog = document.querySelector(".deleting");
+    const closeButton = document.querySelectorAll("#cancel, #close");
+    const deleteButton = document.querySelector("#delete")
+
+
+
+    closeButton.forEach((element) => {
+        element.addEventListener("click", () => {
+            dialog.close();
+        })
+    });
+
+    del.forEach((element) => {
+        element.addEventListener("click", (e) => {
+            // alert("clicked");
+            dialog.showModal();
+            deleteButton.setAttribute("title", e.currentTarget.title); // Set dialog button's title here
+        });
+    });
+
+    deleteButton.addEventListener("click", () => {
+        myLibrary.splice(myLibrary.findIndex(obj => obj.title === deleteButton.title), 1);
+        refresh(); // Update the DOM
+        dialog.close();
+    });
+}
