@@ -9,7 +9,7 @@ function Book(title, author, pages, img, read) {
 }
 
 Book.prototype.info = function () {
-    console.log(this.title + " by " + this.author + ", " + this.pages + " pages, " + (read ? "already read" : "not read yet"));
+    console.log(this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read" : "not read yet"));
 }
 
 function addBookToLibrary(title, author, pages, img, read) {
@@ -26,4 +26,5 @@ addBookToLibrary("Les Miserables", "Victor Hugo", 1232, "https://m.media-amazon.
 addBookToLibrary("The Martian: A Novel", "Andy Weir", 384, "https://m.media-amazon.com/images/I/51QimqeXMXL._SY466_.jpg", 1);
 addBookToLibrary("Twilight (The Twilight Saga, Book 1)", "Stephenie Meyer", 544, "https://m.media-amazon.com/images/I/615ZIxEDozL._SY466_.jpg", 1);
 
-console.table(myLibrary);
+// console.table(myLibrary);
+
