@@ -231,7 +231,8 @@ form>button:hover{
 .bottom-section{
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
 }
 
 .book-card{
@@ -241,4 +242,9 @@ form>button:hover{
     background-position: center;
     background-repeat: no-repeat;
     aspect-ratio: 3/4;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.3);
+}
+
+.read{
+    opacity: 0.5;
 }
