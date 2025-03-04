@@ -34,8 +34,6 @@ function refresh() {
     })
 
     console.table(myLibrary);
-    attachDeleteButtonListeners();
-
 
 }
 
@@ -61,33 +59,63 @@ form.addEventListener("submit", (event) => {
     console.table(myLibrary);
 })
 
+//dialog box creation:
+const del = document.querySelectorAll(".delete-button");
+const dialogDel = document.querySelector(".deleting");
+const deleteBtn = document.querySelector("#delete");
+const cancelBtn = document.querySelectorAll("#cancel, #close");
 
-function attachDeleteButtonListeners() {
-    //dialog box creation:
-    const del = document.querySelectorAll(".delete-button");
-    const dialog = document.querySelector(".deleting");
-    const closeButton = document.querySelectorAll("#cancel, #close");
-    const deleteButton = document.querySelector("#delete")
+del.forEach((element) => {
+    element.addEventListener("click", (e) => {
+        // alert("clicked");
+        dialogDel.showModal();
+        // alert(e.currentTarget.classList)
+    });
+});
 
 
+cancelBtn.forEach((element) => {
+    element.addEventListener("click", () => {
+        dialogDel.close();
+        dialogInfo.close();
+    })
+});
 
-    closeButton.forEach((element) => {
-        element.addEventListener("click", () => {
-            dialog.close();
+const dialogInfo = document.querySelector(".information");
+const info = document.querySelectorAll(".info-button")
+
+info.forEach((element) => {
+    element.addEventListener("click", (e) => {
+        let arrayIndex = myLibrary.findIndex((book) => {
+            return book.title.trim() === e.currentTarget.title.trim();
         })
-    });
+        const titleSection = document.querySelector(".information .dialog-title-section");
 
-    del.forEach((element) => {
-        element.addEventListener("click", (e) => {
-            // alert("clicked");
-            dialog.showModal();
-            deleteButton.setAttribute("title", e.currentTarget.title); // Set dialog button's title here
-        });
-    });
+        if (titleSection.lastElementChild.classList.value == "book-title") {
+            const oldTitle = document.querySelector("div.book-title");
+            titleSection.removeChild(oldTitle);
+        };
+        const title = document.createElement("div");
+        title.setAttribute("class", "book-title");
+        title.textContent = myLibrary[arrayIndex].title;
+        titleSection.appendChild(title);
 
-    deleteButton.addEventListener("click", () => {
-        myLibrary.splice(myLibrary.findIndex(obj => obj.title === deleteButton.title), 1);
-        refresh(); // Update the DOM
-        dialog.close();
+        const messageSection = document.querySelector(".messages");
+        const author = document.createElement("div");
+        author.setAttribute("class", "message");
+        author.innerHTML=`<strong>Author: </strong>${myLibrary[arrayIndex].author}`;
+        const pages = document.createElement("div");
+        pages.setAttribute("class", "message");
+        pages.innerHTML=`<strong> Pages: </strong>${myLibrary[arrayIndex].pages}`;
+        const coverImg = document.createElement("div");
+        coverImg.setAttribute("class", "message");
+        coverImg.innerHTML=`<strong> Cover URL: </strong>${myLibrary[arrayIndex].img}`;
+        messageSection.appendChild(author);
+        messageSection.appendChild(pages);
+
+
+
+
+        dialogInfo.showModal();
     });
-}
+});

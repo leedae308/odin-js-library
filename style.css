@@ -245,7 +245,7 @@ form>button:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    aspect-ratio: 3/4;
+    aspect-ratio: 3/4.5;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
 
     display: grid;
@@ -299,21 +299,25 @@ dialog {
     border: none;
     border-radius: 0.5rem;
     display: grid;
-    grid-template-rows: auto auto auto;
-    padding: 2rem 2rem;
+    grid-template-rows: 1fr 3fr;
+    padding-left: 2rem;
     /* z-index: -1; */
+    margin-bottom:
 }
 
 .dialog-title-section {
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 1.8rem, 2.5rem);
     /* font-weight: bold; */
+    /* font-size: 5vw; */
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
 }
 
 #close {
-    justify-self: flex-end;
-    align-self: flex-start;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 #close>img {
@@ -321,14 +325,22 @@ dialog {
 }
 
 dialog>.buttons {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     display: grid;
     grid-template-columns: auto auto;
     gap: 1rem;
-    margin-left: 15rem;
+    /* margin-left: 15rem; */
+}
+
+dialog>.buttons>button:hover{
+    filter:brightness(0.8);
 }
 
 dialog>.buttons>button {
-    padding: 0.5rem;
+    width: 10rem;
+    padding: 1rem;
     border-radius: 0.5rem;
     font-size: 1rem;
 }
