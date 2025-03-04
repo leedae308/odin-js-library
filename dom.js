@@ -52,6 +52,19 @@ document.querySelector(".bottom-section").addEventListener("click", (e) => {
         console.log("Delete clicked for:", deleteBtn.title);
         dialogDel.showModal();
 
+        let arrayIndex = myLibrary.findIndex((book) => {
+            return book.title.trim() === deleteBtn.title.trim();
+        });
+
+        const deleteButton = document.querySelector(".confirm-delete");
+        const newDeleteButton = deleteButton.cloneNode(true);
+        deleteButton.parentNode.replaceChild(newDeleteButton, deleteButton);
+        newDeleteButton.addEventListener("click", ()=>{
+            myLibrary.splice(arrayIndex, 1);
+            refresh();
+            dialogDel.close();
+        })
+
     }
     if (infoBtn) {
         console.log("Info clicked for:", infoBtn.title);
@@ -124,7 +137,6 @@ form.addEventListener("submit", (event) => {
 //dialog box creation:
 const del = document.querySelectorAll(".delete-button");
 const dialogDel = document.querySelector(".deleting");
-const deleteBtn = document.querySelector("#delete");
 const cancelBtn = document.querySelectorAll("#cancel, #close");
 const dialogInfo = document.querySelector(".information");
 const info = document.querySelectorAll(".info-button")
