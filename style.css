@@ -373,3 +373,7 @@ dialog > .message{
     /* justify-self: center; */
     justify-items:center;
 }
+
+.messages{
+    margin-top: 1rem;
+}

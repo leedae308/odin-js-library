@@ -44,8 +44,62 @@ function refresh() {
 
 refresh();
 
-//Receiving from the Form
+document.querySelector(".bottom-section").addEventListener("click", (e) => {
+    const deleteBtn = e.target.closest(".delete-button");
+    const infoBtn = e.target.closest(".info-button");
 
+    if (deleteBtn) {
+        console.log("Delete clicked for:", deleteBtn.title);
+        // Handle delete action
+    }
+    if (infoBtn) {
+        console.log("Info clicked for:", infoBtn.title);
+        // Handle info action
+
+        let arrayIndex = myLibrary.findIndex((book) => {
+            return book.title.trim() === infoBtn.title.trim();
+        })
+        const titleSection = document.querySelector(".information .dialog-title-section");
+        if (titleSection.lastElementChild.classList.value == "book-title") {
+            const oldTitle = document.querySelector("div.book-title");
+            titleSection.removeChild(oldTitle);
+        };
+        const title = document.createElement("div");
+        title.setAttribute("class", "book-title");
+        title.textContent = myLibrary[arrayIndex].title;
+        titleSection.appendChild(title);
+
+        const messageSection = document.querySelector(".messages");
+        messageSection.innerHTML = "";
+        const author = document.createElement("div");
+        author.setAttribute("class", "message");
+        author.innerHTML = `<strong>Author: </strong>${myLibrary[arrayIndex].author}`;
+        const pages = document.createElement("div");
+        pages.setAttribute("class", "message");
+        pages.innerHTML = `<strong> Pages: </strong>${myLibrary[arrayIndex].pages}`;
+        const coverImg = document.createElement("div");
+        coverImg.setAttribute("class", "message");
+        coverImg.innerHTML = `<strong> Cover URL: </strong>${myLibrary[arrayIndex].img}`;
+        messageSection.appendChild(author);
+        messageSection.appendChild(pages);
+        messageSection.appendChild(coverImg);
+
+        const readCheckBox = document.querySelector("#read-change");
+        readCheckBox.checked=myLibrary[arrayIndex].read;
+
+        dialogInfo.showModal();
+
+        const readButton = document.querySelector(".infoRead");
+        readButton.addEventListener("click", () => {
+            readCheckBox.checked ^=1;
+            myLibrary[arrayIndex].read ^=1;
+            refresh();
+        })
+    }
+});
+
+
+//Receiving from the Form
 const form = document.querySelector("#addNewBook");
 
 form.addEventListener("submit", (event) => {
@@ -84,38 +138,52 @@ cancelBtn.forEach((element) => {
 const dialogInfo = document.querySelector(".information");
 const info = document.querySelectorAll(".info-button")
 
-info.forEach((element) => {
-    element.addEventListener("click", (e) => {
-        let arrayIndex = myLibrary.findIndex((book) => {
-            return book.title.trim() === e.currentTarget.title.trim();
-        })
-        const titleSection = document.querySelector(".information .dialog-title-section");
+// info.forEach((element) => {
+//     element.addEventListener("click", (e) => {
+//         let arrayIndex = myLibrary.findIndex((book) => {
+//             return book.title.trim() === e.currentTarget.title.trim();
+//         })
+//         const titleSection = document.querySelector(".information .dialog-title-section");
 
-        if (titleSection.lastElementChild.classList.value == "book-title") {
-            const oldTitle = document.querySelector("div.book-title");
-            titleSection.removeChild(oldTitle);
-        };
-        const title = document.createElement("div");
-        title.setAttribute("class", "book-title");
-        title.textContent = myLibrary[arrayIndex].title;
-        titleSection.appendChild(title);
+//         if (titleSection.lastElementChild.classList.value == "book-title") {
+//             const oldTitle = document.querySelector("div.book-title");
+//             titleSection.removeChild(oldTitle);
+//         };
+//         const title = document.createElement("div");
+//         title.setAttribute("class", "book-title");
+//         title.textContent = myLibrary[arrayIndex].title;
+//         titleSection.appendChild(title);
 
-        const messageSection = document.querySelector(".messages");
-        const author = document.createElement("div");
-        author.setAttribute("class", "message");
-        author.innerHTML=`<strong>Author: </strong>${myLibrary[arrayIndex].author}`;
-        const pages = document.createElement("div");
-        pages.setAttribute("class", "message");
-        pages.innerHTML=`<strong> Pages: </strong>${myLibrary[arrayIndex].pages}`;
-        const coverImg = document.createElement("div");
-        coverImg.setAttribute("class", "message");
-        coverImg.innerHTML=`<strong> Cover URL: </strong>${myLibrary[arrayIndex].img}`;
-        messageSection.appendChild(author);
-        messageSection.appendChild(pages);
+//         const messageSection = document.querySelector(".messages");
+//         messageSection.innerHTML = "";
+//         const author = document.createElement("div");
+//         author.setAttribute("class", "message");
+//         author.innerHTML = `<strong>Author: </strong>${myLibrary[arrayIndex].author}`;
+//         const pages = document.createElement("div");
+//         pages.setAttribute("class", "message");
+//         pages.innerHTML = `<strong> Pages: </strong>${myLibrary[arrayIndex].pages}`;
+//         const coverImg = document.createElement("div");
+//         coverImg.setAttribute("class", "message");
+//         coverImg.innerHTML = `<strong> Cover URL: </strong>${myLibrary[arrayIndex].img}`;
+//         messageSection.appendChild(author);
+//         messageSection.appendChild(pages);
+//         messageSection.appendChild(coverImg);
 
+//         const readCheckBox = document.querySelector("#read-change");
+//         if (myLibrary[arrayIndex].read) {
+//             readCheckBox.checked = true;
+//         }
+//         else {
+//             readCheckBox.checked = false;
+//         }
 
+//         dialogInfo.showModal();
 
-
-        dialogInfo.showModal();
-    });
-});
+//         const readButton = document.querySelector(".infoRead");
+//         readButton.addEventListener("click", () => {
+//             readCheckBox.checked = !readCheckBox.checked;
+//             myLibrary[arrayIndex].read = !myLibrary[arrayIndex].read
+//             refresh();
+//         })
+//     });
+// });
