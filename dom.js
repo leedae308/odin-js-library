@@ -59,7 +59,7 @@ document.querySelector(".bottom-section").addEventListener("click", (e) => {
         const deleteButton = document.querySelector(".confirm-delete");
         const newDeleteButton = deleteButton.cloneNode(true);
         deleteButton.parentNode.replaceChild(newDeleteButton, deleteButton);
-        newDeleteButton.addEventListener("click", ()=>{
+        newDeleteButton.addEventListener("click", () => {
             myLibrary.splice(arrayIndex, 1);
             refresh();
             dialogDel.close();
@@ -108,7 +108,7 @@ document.querySelector(".bottom-section").addEventListener("click", (e) => {
         const newReadButton = readButton.cloneNode(true);
         readButton.parentNode.replaceChild(newReadButton, readButton);
 
-        
+
         newReadButton.addEventListener("click", () => {
             console.log(arrayIndex);
             readCheckBox.checked = !readCheckBox.checked;
@@ -124,14 +124,16 @@ document.querySelector(".bottom-section").addEventListener("click", (e) => {
 const form = document.querySelector("#addNewBook");
 
 form.addEventListener("submit", (event) => {
-
     event.preventDefault();
-    if (form.book_cover.value == "") {
-        form.book_cover.value = "https://edit.org/images/cat/book-covers-big-2019101610.jpg"
-    }
-    addBookToLibrary(form.book_title.value, form.book_author.value, form.book_pages.value, form.book_cover.value, form.book_read.checked);
-    refresh();
-    console.table(myLibrary);
+    const book = new Book(
+        form.book_title.value,
+        form.book_author.value,
+        form.book_pages.value,
+        form.book_cover.value || "https://edit.org/images/cat/book-covers-big-2019101610.jpg",
+        form.book_read.checked
+    );
+    library.addBook(book);
+    form.reset();
 })
 
 //dialog box creation:

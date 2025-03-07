@@ -1,21 +1,50 @@
-const myLibrary = [];
 
-function Book(title, author, pages, img, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.img = img;
+class Book {
+    constructor(title, author, pages, img, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.img = img;
+        this.read = read;
+    }
+
+    info() {
+        console.log(`${this.title} by ${this.author}, ${this.pages} pages` + (this.read ? "already read" : "not read yet"));
+    }
 }
 
-Book.prototype.info = function () {
-    console.log(this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read" : "not read yet"));
+class Library {
+    constructor() {
+        this.books = [];
+    }
+
+    addBook(book) {
+        this.books.push(booK);
+        this.refresh();
+    }
+
+    removeBook(title) {
+        this.books.filter((book) => book.title !== title)
+        this.refresh();
+    }
+
+    refresh() {
+        const section = document.querySelector(".bottom-section");
+        section.innerHTML = "";
+        this.books.forEach((book) => {
+            const bookCard = document.createElement("div");
+            bookCard.className = book.read ? "book-card read" : "book-card";
+            bookCard.style.backgroundImage = `url('${book.img}')`;
+            bookCard.innerHTML = `
+            <button class="delete-button" title="${book.title}"><img src="icons/delete-outline.svg" /></button>
+            <button class="info-button" title="${book.title}"><img src="icons/information-outline.svg" /></button>
+        `;
+            section.appendChild(bookCard);
+
+        });
+    }
 }
 
-function addBookToLibrary(title, author, pages, img, read) {
-    const book = new Book(title, author, pages, img, read);
-    myLibrary.push(book);
-}
 
 
 // Six books to start with
@@ -28,3 +57,4 @@ addBookToLibrary("Twilight (The Twilight Saga, Book 1)", "Stephenie Meyer", 544,
 
 // console.table(myLibrary);
 
+const library = new Library();
